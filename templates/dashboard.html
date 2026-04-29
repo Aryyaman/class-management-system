@@ -1,28 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Dashboard</title>
 <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
+
+<div class="sidebar">
+<a href="/dashboard">Dashboard</a>
+<a href="/students">Students</a>
+<a href="/add_student">Add Student</a>
+<a href="/attendance">Attendance</a>
+<a href="/marks">Marks</a>
+</div>
+
+<div class="content">
 
 <h1>Dashboard</h1>
 
-<div class="cards">
-
-<a href="/students">
-<div class="card">Students</div>
-</a>
-
-<a href="/attendance">
-<div class="card">Attendance</div>
-</a>
-
-<div class="card">Marks</div>
-
-<div class="card">Timetable</div>
-
+<div class="card">
+<h2>{{total}}</h2>
+<p>Total Students</p>
 </div>
 
-</body>
-</html>
+<div class="card">
+<h2>92%</h2>
+<p>Attendance</p>
+</div>
+
+<div class="card">
+<h2>84%</h2>
+<p>Average Marks</p>
+</div>
+
+</div>
