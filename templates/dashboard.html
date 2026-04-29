@@ -1,30 +1,26 @@
-<link rel="stylesheet" href="/static/style.css">
+{% extends 'base.html' %}
+{% block content %}
+<h1>Dashboard Overview</h1>
 
-<div class="sidebar">
-<a href="/dashboard">Dashboard</a>
-<a href="/students">Students</a>
-<a href="/add_student">Add Student</a>
-<a href="/attendance">Attendance</a>
-<a href="/marks">Marks</a>
+<div class="card-grid">
+    <div class="card">
+        <h2>{{ total }}</h2>
+        <p>Total Enrolled Students</p>
+    </div>
+    
+    <div class="card">
+        <h2>{{ avg_attendance }}%</h2>
+        <p>Average Attendance</p>
+    </div>
+    
+    <div class="card">
+        <h2>{{ avg_marks }}</h2>
+        <p>Average Academic Score</p>
+    </div>
 </div>
 
-<div class="content">
-
-<h1>Dashboard</h1>
-
-<div class="card">
-<h2>{{total}}</h2>
-<p>Total Students</p>
+<div class="card" style="margin-top: 20px;">
+    <h3>Recent Activity</h3>
+    <p style="margin-top: 10px; color: var(--text-secondary);">System updated and synced.</p>
 </div>
-
-<div class="card">
-<h2>92%</h2>
-<p>Attendance</p>
-</div>
-
-<div class="card">
-<h2>84%</h2>
-<p>Average Marks</p>
-</div>
-
-</div>
+{% endblock %}

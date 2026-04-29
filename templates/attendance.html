@@ -1,15 +1,49 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Attendance</title>
-<link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
+<div class="flex-between">
+    <h1>Attendance Tracking</h1>
+</div>
 
-<h1>Attendance</h1>
-
-<p>Ari - Present</p>
-<p>John - Absent</p>
-
-</body>
-</html>
+<div class="table-container" style="padding: 24px;">
+    <form method="GET" class="filter-form">
+        <div class="form-group">
+            <label>Select Date</label>
+            <input type="date" name="date" value="{{ date or '' }}" required>
+        </div>
+        <button type="submit" class="btn" style="height: 44px;">Load Students</button>
+    </form>
+    
+    {% if date %}
+    <hr style="border:0; border-top:1px solid var(--border); margin: 20px 0;">
+    <form method="POST">
+        <input type="hidden" name="date" value="{{ date }}">
+        <table style="margin-bottom: 20px;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Roll No.</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in students %}
+                <tr>
+                    <td>{{ s.id }}</td>
+                    <td>{{ s.name }}</td>
+                    <td>{{ s.roll }}</td>
+                    <td>
+                        <select name="status_{{ s.id }}" style="width: auto;">
+                            <option value="Present" {% if attendance_data.get(s.id) == 'Present' %}selected{% endif %}>Present</option>
+                            <option value="Absent" {% if attendance_data.get(s.id) == 'Absent' %}selected{% endif %}>Absent</option>
+                        </select>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit">Save Attendance</button>
+    </form>
+    {% endif %}
+</div>
+{% endblock %}
